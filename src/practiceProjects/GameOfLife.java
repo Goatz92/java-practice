@@ -69,29 +69,20 @@ public class GameOfLife {
      * @return Returns the randomly filled grid
      */
 
-    /*
-    TODO The method now populates the grid in a linear way. This means the result can be that the first 3 rows are
-         randomly populated and the rest empty (especially when grid has large dimensions)
-         -Find a way to randomly populate the grid in it's entirety
-     */
-    public static int[][] initGridRandom(int[][] grid, int rows, int columns, Random rand) {
+    public static void initGridRandom(int[][] grid, int rows, int columns, Random rand) {
+
         // Calculate the maximum number of alive cells (half the grid size)
-        final int MAX_ALIVE_CELLS = 30;
+        final int MAX_ALIVE_CELLS = 50;
         int aliveCount = 0;
 
-        // Randomly populate the grid (randomly set cells to 1 or 0)
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                // Only set cell to alive (1) if we haven't reached the max limit
-                if (aliveCount < MAX_ALIVE_CELLS && rand.nextBoolean()) {
-                    grid[i][j] = 1;
-                    aliveCount++;  // Increment the alive cell counter
-                } else {
-                    grid[i][j] = 0;
-                }
+        while (aliveCount != MAX_ALIVE_CELLS) {
+            int row = rand.nextInt(0, rows);
+            int col = rand.nextInt(0, columns);
+            if (grid[(row)][(col)] == 0) {
+                grid[row][col] = 1;
+                aliveCount++;
             }
         }
-        return grid;
     }
 
     /**
