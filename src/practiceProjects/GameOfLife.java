@@ -3,7 +3,7 @@ package practiceProjects;
 import java.util.Random;
 
 /**
- * Attempt to making Conway's Game of Life
+ * Conway's Game of Life
  * In Java
  * Program outputs only on console in
  * print blocks of stars and dots
@@ -13,18 +13,20 @@ public class GameOfLife {
 
     public static void main(String[] args) {
 
-        final int ROWS = 10;
-        final int COLUMNS = 10;
+//      TODO Make the dimensions change by user input
+        final int ROWS = 20;
+        final int COLUMNS = 20;
 
-//      Init a grid. Dimensions can be changed by changing values of final int ROWS/COLUMNS
+        //Init a grid. Dimensions can be changed by changing values of final int ROWS/COLUMNS
         int[][] grid = new int[ROWS][COLUMNS];
-        //Randomizing grid's contents
         Random rand = new Random();
 
+        //Randomizing grid's contents
         initGridRandom(grid, ROWS, COLUMNS, rand);
 
         //Prints Current gen of grid gen < x times
-        //Then generates nextGen of grid
+        //Then generates nextGen of grid.
+        //TODO make number of generations change by user input
         for (int gen = 0; gen < 50; gen++) {
             System.out.println("Generation: " + (gen + 1));
             printGrid(grid);
@@ -40,7 +42,8 @@ public class GameOfLife {
     /**
      * Prints the grid in "*" and "." format
      * Used for 1st and all concurrent Generations
-     * @param grid The first or the last updated version of the grid
+     *
+     * @param grid The first and all the next updated version of the grid
      */
     public static void printGrid(int[][] grid) {
         for (int i = 0; i < grid.length; i++) {
@@ -57,6 +60,7 @@ public class GameOfLife {
      * to 1 or 0.
      * Has a limit to how many cells can be alive in the grid
      * at first initialization equal to the MAX_ALIVE_CELLS final int
+     * TODO Make Number of Max alive cells change by user input.
      *
      * @param grid The initial grid to be populated
      * @param rows The rows of the initial grid
