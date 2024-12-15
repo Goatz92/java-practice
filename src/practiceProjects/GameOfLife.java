@@ -21,11 +21,6 @@ public class GameOfLife {
         int[][] grid = new int[ROWS][COLUMNS];
         Random rand = new Random();
 
-
-
-
-        
-
         //Randomizing grid's contents
         initGridRandom(grid, ROWS, COLUMNS, rand);
 
