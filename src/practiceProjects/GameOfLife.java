@@ -1,6 +1,5 @@
 package practiceProjects;
 
-import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -8,7 +7,10 @@ import java.util.Scanner;
  * Conway's Game of Life
  * In Java
  * Program outputs only on console in
- * print blocks of stars and dots
+ * Print blocks of stars and dots.
+ * User inputs number of Rows, Columns, Generations and Max alive cells
+ * for the first generation printed. Then applies the rules and continues
+ * until maximum generations are printed.
  *
  */
 public class GameOfLife {
@@ -99,10 +101,11 @@ public class GameOfLife {
      * 2) Any live cell with two or three live neighbours lives on to the next generation.
      * 3) Any live cell with more than three live neighbours dies, as if by overpopulation.
      * 4) Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+     * Rule 1) and 2) are merged into one rule
      *
      * @param grid    The initial generation grid
-     * @param rows    The rows of the initial grid
-     * @param columns The columns of the initial grid
+     * @param rows    The rows of the initial grid (input by the user)
+     * @param columns The columns of the initial grid (input by the user)
      */
     public static void nextGen(int[][] grid, int rows, int columns) {
 
