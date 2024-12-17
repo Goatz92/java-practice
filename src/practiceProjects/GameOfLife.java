@@ -1,6 +1,8 @@
 package practiceProjects;
 
+import java.util.InputMismatchException;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Conway's Game of Life
@@ -11,26 +13,31 @@ import java.util.Random;
  */
 public class GameOfLife {
 
+    static Scanner in = new Scanner(System.in);
+    static Random rand = new Random();
+
     public static void main(String[] args) {
 
-//      TODO Make the dimensions change by user input
-        final int ROWS = 20;
-        final int COLUMNS = 20;
+        //User input for number of rows and columns of the grid
+        System.out.println("Please input the number of Rows to be printed");
+        int rows = in.nextInt();
+        System.out.println("Please input the number of Columns to be printed");
+        int columns = in.nextInt();
 
-        //Init a grid. Dimensions can be changed by changing values of final int ROWS/COLUMNS
-        int[][] grid = new int[ROWS][COLUMNS];
-        Random rand = new Random();
+        //grid initialization
+        int[][] grid = new int[rows][columns];
         
-        //Randomizing grid's contents
-        initGridRandom(grid, ROWS, COLUMNS, rand);
+        //Randomizes cell quantity and position in the first grid generation
+        initGridRandom(grid, rows, columns, rand);
 
         //Prints Current gen of grid gen < x times
         //Then generates nextGen of grid.
-        //TODO make number of generations change by user input
-        for (int gen = 0; gen < 50; gen++) {
+        System.out.println("Please input the number of Generations to be printed");
+        int numberOfGenerations = in.nextInt();
+        for (int gen = 0; gen < numberOfGenerations; gen++) {
             System.out.println("Generation: " + (gen + 1));
             printGrid(grid);
-            nextGen(grid, ROWS, COLUMNS);
+            nextGen(grid, rows, columns);
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
@@ -71,11 +78,11 @@ public class GameOfLife {
 
     public static void initGridRandom(int[][] grid, int rows, int columns, Random rand) {
 
-        // Calculate the maximum number of alive cells (half the grid size)
-        final int MAX_ALIVE_CELLS = 50;
+        System.out.println("Please input the number of Max Alive Cells to be printed in the first generation");
+        int maxAliveCells = in.nextInt();
         int aliveCount = 0;
 
-        while (aliveCount != MAX_ALIVE_CELLS) {
+        while (aliveCount != maxAliveCells) {
             int row = rand.nextInt(0, rows);
             int col = rand.nextInt(0, columns);
             if (grid[(row)][(col)] == 0) {
@@ -116,7 +123,6 @@ public class GameOfLife {
                 }
                 //The loop counts the initial cell itself
                 //So we have to subtract it from aliveCount
-                //todo: Find a way to not count the initial cell
                 aliveCount -= grid[i][j];
 
                 //Apply Game of life Rules
@@ -146,7 +152,3 @@ public class GameOfLife {
         }
     }
 }
-
-/*
-
-*/
