@@ -18,11 +18,14 @@ public class GameOfLife {
 
     public static void main(String[] args) {
 
+        int rows = 0;
+        int columns = 0;
+
         //User input for number of rows and columns of the grid
         System.out.println("Please input the number of Rows to be printed");
-        int rows = in.nextInt();
+        rows = in.nextInt();
         System.out.println("Please input the number of Columns to be printed");
-        int columns = in.nextInt();
+        columns = in.nextInt();
 
         //grid initialization
         int[][] grid = new int[rows][columns];
@@ -67,13 +70,10 @@ public class GameOfLife {
      * to 1 or 0.
      * Has a limit to how many cells can be alive in the grid
      * at first initialization equal to the MAX_ALIVE_CELLS final int
-     * TODO Make Number of Max alive cells change by user input.
-     *
      * @param grid The initial grid to be populated
      * @param rows The rows of the initial grid
      * @param columns The columns of the initial grid
      * @param rand Object of the Random class
-     * @return Returns the randomly filled grid
      */
 
     public static void initGridRandom(int[][] grid, int rows, int columns, Random rand) {
