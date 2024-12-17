@@ -20,7 +20,7 @@ public class GameOfLife {
         //Init a grid. Dimensions can be changed by changing values of final int ROWS/COLUMNS
         int[][] grid = new int[ROWS][COLUMNS];
         Random rand = new Random();
-
+        
         //Randomizing grid's contents
         initGridRandom(grid, ROWS, COLUMNS, rand);
 
